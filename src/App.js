@@ -11,6 +11,13 @@ import {
 } from "react-native";
 
 export default function App() {
+  const [repositories, setRepositories] = useState([]);
+
+  useEffect(() => {
+    api.get('repositories').then((response) => {
+      setRepositories(response.data);
+    });
+  }, []);
   async function handleLikeRepository(id) {
     // Implement "Like Repository" functionality
   }
